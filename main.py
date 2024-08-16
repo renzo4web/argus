@@ -4,6 +4,7 @@ import json
 import warnings
 from PIL import Image
 from crewai import Agent, Task, Crew, Process
+from crewai_tools import VisionTool
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.tools import tool
 from dotenv import load_dotenv
@@ -57,7 +58,8 @@ class Vision:
             return f"Error: {str(e)}"
 
 
-vision_tool = Vision.vision
+vision_tool = VisionTool()
+
 
 class ProductInfo(BaseModel):
     description: str
