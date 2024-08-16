@@ -1,5 +1,5 @@
 import os
-from typing import Type
+from typing import Type, Any
 from pydantic import BaseModel
 from crewai_tools.tools.base_tool import BaseTool
 from openai import OpenAI
@@ -13,7 +13,7 @@ class ProductInfo(BaseModel):
 
 class JsonToolSchema(BaseModel):
     """Input for JSON Tool."""
-    input_text: str
+    input_text: Any
 
 class JsonTool(BaseTool):
     name: str = "JSON Tool"
@@ -26,7 +26,7 @@ class JsonTool(BaseTool):
         print("json_tool input: ", kwargs)
         input_text = kwargs.get("input_text", "")
         
-        print("input texxxxx", input_text)
+        print("input text", input_text)
         if not input_text:
             return "Input text is required."
 
@@ -34,7 +34,7 @@ class JsonTool(BaseTool):
             model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "You are a JSON summarizer. Extract the product information and format it into a structured JSON object."},
-                {"role": "user", "content": input_text},
+                {"role": "user", "content": str(input_text)},
             ],
             response_format=ProductInfo,
         )
