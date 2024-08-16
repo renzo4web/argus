@@ -1,0 +1,64 @@
+# research_task:
+#   description: >
+#     Conduct a thorough research about {topic}
+#     Make sure you find any interesting and relevant information given
+#     the current year is 2024.
+#   expected_output: >
+#     A list with 10 bullet points of the most relevant information about {topic}
+#   agent: researcher
+
+# reporting_task:
+#   description: >
+#     Review the context you got and expand each topic into a full section for a report.
+#     Make sure the report is detailed and contains any and all relevant information.
+#   expected_output: >
+#     A fully fledge reports with the mains topics, each with a full section of information.
+#     Formatted as markdown without '```'
+#   agent: reporting_analyst
+
+# image_analysis_task:
+#   description: >
+#      Use VisionTool to analyze the provided image and return the following information:
+#       1. Identify the main object or product in the image
+#       2. Determine if it's a commercial product
+#       3. Provide detailed characteristics (e.g., color, size, shape, material)
+#       4. If it's a product, suggest appropriate categorization
+#       5. List any notable features or unique aspects
+#       6. Estimate the object's purpose or use case
+#       7. Identify any visible branding or labels
+#       8. Note the overall condition of the object
+#       9. Describe the background or context of the image, if relevant
+#       10. Suggest any additional information that might be valuable for cataloging
+#   expected_output: >
+#     A comprehensive report detailing all the requested information about the 
+#     image, formatted as a structured list or bullet points for easy reading.
+#   agent: image_analyst
+
+load_image_task:
+  description: >
+    Load the image from the file path: {image_path_url}
+  expected_output: >
+    Confirmation that the image has been successfully loaded.
+  agent: image_loader
+
+process_image_task:
+  description: >
+    Use VisionTool to extract relevant data from the loaded image THIS IS THE PATH of the image: {image_path_url}. Extract the following information:
+    1. Business name
+    2. Line items with prices
+    3. Tax amount
+    4. Total amount
+  expected_output: >
+    A detailed list of extracted text data from the receipt, including business name, line items, tax, and total.
+  agent: llm_processor
+
+summarize_json_task:
+  description: >
+    Compile the extracted information into a well-structured JSON object. The JSON should include:
+    1. Business name
+    2. An array of line items, each with item name and price
+    3. Tax amount
+    4. Total amount
+  expected_output: >
+    A JSON object containing the structured receipt data, ready for saving to a file.
+  agent: json_summarizer
