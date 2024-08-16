@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from datetime import datetime
 import sys
 from argus.crew import ArgusCrew
 
@@ -12,9 +13,17 @@ def run():
     Run the crew.
     """
     inputs = {
-        'image_path_url': "/Users/renzo/dev/argus/src/argus/example-img/images.jpeg"
+        'image_paths_urls': [
+            'https://i.ebayimg.com/images/g/0H0AAOSw4y1lzTRv/s-l1600.jpg',
+            'https://i.ebayimg.com/images/g/wNkAAOSwJO9lzTRw/s-l1600.jpg',
+            'https://i.ebayimg.com/images/g/xmcAAOSwGRBlzTR4/s-l1600.jpg'
+        ]
     }
-    ArgusCrew().crew().kickoff(inputs=inputs)
+    crew_output = ArgusCrew().crew().kickoff(inputs=inputs)
+    # save the raw output to a json file
+    with open(f'raw_output-{datetime.now().strftime("%Y-%m-%d-%H-%M-%S")}.json', 'w') as file:
+        file.write(crew_output.raw)
+    
 
 
 def train():

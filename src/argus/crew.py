@@ -1,9 +1,10 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
-from crewai_tools import VisionTool
-from PIL import Image
+from argus.tools.json_tool import JsonTool
+from argus.tools.vision_tool import VisionTool
 
 vision_tool = VisionTool()
+json_tool = JsonTool()
 
 @CrewBase
 class ArgusCrew():
@@ -12,53 +13,48 @@ class ArgusCrew():
     tasks_config = 'config/tasks.yaml'
 
     @agent
-    def image_loader(self) -> Agent:
+    def image_analyst(self) -> Agent:
         return Agent(
-            config=self.agents_config['image_loader'],
-            allow_delegation=False,
-            verbose=True
-        )
-
-    @agent
-    def llm_processor(self) -> Agent:
-        return Agent(
-            config=self.agents_config['llm_processor'],
+            config=self.agents_config['image_analyst'],
             allow_delegation=False,
             tools=[vision_tool],
             verbose=True
         )
 
     @agent
-    def json_summarizer(self) -> Agent:
+    def product_describer(self) -> Agent:
         return Agent(
-            config=self.agents_config['json_summarizer'],
+            config=self.agents_config['product_describer'],
             allow_delegation=False,
             verbose=True
         )
 
-    @task
-    def load_image_task(self) -> Task:
-        return Task(
-            config=self.tasks_config['load_image_task'],
-						action=lambda: Image.open(self.inputs['image_path_url'])  # Open the image file using PIL
+    @agent
+    def json_provider(self) -> Agent:
+        return Agent(
+            config=self.agents_config['json_provider'],
+            allow_delegation=False,
+            tools=[JsonTool(result_as_answer=True)],
+            verbose=True
         )
 
     @task
-    def process_image_task(self) -> Task:
+    def analyze_image_task(self) -> Task:
         return Task(
-            config=self.tasks_config['process_image_task'],
-						 action=lambda image: self.agents['llm_processor'].tools[0].query_image(
-                image=image,
-                query="Extract the business name, line items with prices, tax, and total from this receipt image."
-            )
+            config=self.tasks_config['analyze_image_task'],
         )
 
     @task
-    def summarize_json_task(self) -> Task:
+    def product_description_task(self) -> Task:
         return Task(
-            config=self.tasks_config['summarize_json_task'],
-            output_file='receipt_data.json',
+            config=self.tasks_config['product_description_task'],
         )
+		
+    @task
+    def structured_json_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['structured_json_task'],
+        )	
 
     @crew
     def crew(self) -> Crew:
