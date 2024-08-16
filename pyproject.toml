@@ -2,7 +2,7 @@
 name = "argus"
 version = "0.1.0"
 description = "argus using crewAI"
-authors = ["Your Name <you@example.com>"]
+authors = ["renzo@devpulse.xyz"]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<=3.13"
