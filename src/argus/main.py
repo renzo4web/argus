@@ -14,9 +14,9 @@ def run():
     """
     inputs = {
         'image_paths_urls': [
-            'https://i.ebayimg.com/images/g/0H0AAOSw4y1lzTRv/s-l1600.jpg',
-            'https://i.ebayimg.com/images/g/wNkAAOSwJO9lzTRw/s-l1600.jpg',
-            'https://i.ebayimg.com/images/g/xmcAAOSwGRBlzTR4/s-l1600.jpg'
+            'https://res.cloudinary.com/ddht1mju9/image/upload/v1723844678/gryhl5ldfhpgajab1vza.jpg',
+            # 'https://i.ebayimg.com/images/g/wNkAAOSwJO9lzTRw/s-l1600.jpg',
+            # 'https://i.ebayimg.com/images/g/xmcAAOSwGRBlzTR4/s-l1600.jpg'
         ]
     }
     crew_output = ArgusCrew().crew().kickoff(inputs=inputs)

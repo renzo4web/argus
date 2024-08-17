@@ -21,6 +21,7 @@ product_describer:
     If you are able to provide with all the information about the product in a structured way, you will get a $10,000 commission!
     If you not have sufficient information only provide with the information that you have, do not provide with information that you do not have.
   max_iter: 1
+  llm: deepseek_llm
 
 json_provider:
   role: >
