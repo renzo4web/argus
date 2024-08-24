@@ -15,12 +15,15 @@ pip install poetry
 Next, navigate to your project directory and install the dependencies:
 
 1. First lock the dependencies and then install them:
+
 ```bash
 poetry lock
 ```
+
 ```bash
 poetry install
 ```
+
 ### Customizing
 
 **Add your `OPENAI_API_KEY` into the `.env` file**
@@ -37,7 +40,9 @@ To kickstart your crew of AI agents and begin task execution, run this from the 
 ```bash
 $ crewai run
 ```
+
 or
+
 ```bash
 poetry run argus
 ```
@@ -46,6 +51,14 @@ This command initializes the argus Crew, assembling the agents and assigning the
 
 This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
 
+## API
+
+To use the API, run the following command:
+
+```bash
+fastapi dev src/api/main.py
+```
+
 ## Understanding Your Crew
 
 The argus Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
@@ -53,6 +66,7 @@ The argus Crew is composed of multiple AI agents, each with unique roles, goals,
 ## Support
 
 For support, questions, or feedback regarding the Argus Crew or crewAI.
+
 - Visit our [documentation](https://docs.crewai.com)
 - Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
 - [Join our Discord](https://discord.com/invite/X4JWnZnxPb)

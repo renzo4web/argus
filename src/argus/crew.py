@@ -32,6 +32,17 @@ class ArgusCrew:
             model="deepseek-chat",
         )
 
+    @llm
+    def groq_llm(self) -> ChatOpenAI:
+        api_key = os.getenv("GROQ_API_KEY")
+        if not api_key:
+            raise ValueError("GROQ_API_KEY no está configurada en el archivo .env")
+        return ChatOpenAI(
+            api_key=api_key,
+            base_url="https://api.groq.com/openai/v1",
+            model="gemma-7b-it",
+        )
+
     # AGENTS
 
     @agent

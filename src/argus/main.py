@@ -3,28 +3,18 @@ from datetime import datetime
 import sys
 from argus.crew import ArgusCrew
 
-# This main file is intended to be a way for your to run your
-# crew locally, so refrain from adding necessary logic into this file.
-# Replace with inputs you want to test with, it will automatically
-# interpolate any tasks and agents information
-
-def run():
+def run(image_urls):
     """
-    Run the crew.
+    Run the crew with the given image URLs.
     """
     inputs = {
-        'image_paths_urls': [
-            'https://res.cloudinary.com/ddht1mju9/image/upload/v1723844678/gryhl5ldfhpgajab1vza.jpg',
-            # 'https://i.ebayimg.com/images/g/wNkAAOSwJO9lzTRw/s-l1600.jpg',
-            # 'https://i.ebayimg.com/images/g/xmcAAOSwGRBlzTR4/s-l1600.jpg'
-        ]
+        'image_paths_urls': image_urls
     }
     crew_output = ArgusCrew().crew().kickoff(inputs=inputs)
     # save the raw output to a json file
     with open(f'raw_output-{datetime.now().strftime("%Y-%m-%d-%H-%M-%S")}.json', 'w') as file:
         file.write(crew_output.raw)
-    
-
+    return crew_output.raw
 
 def train():
     """

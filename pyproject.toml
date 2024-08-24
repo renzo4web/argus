@@ -2,7 +2,7 @@
 name = "argus"
 version = "0.1.0"
 description = "argus using crewAI"
-authors = ["renzo@devpulse.xyz"]
+authors = [ "Renzo Barrios <renzo@devpulse.xyz>"]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<=3.13"
@@ -15,6 +15,7 @@ python-dotenv = "^1.0.1"
 openai = "^1.40.8"
 requests = "^2.32.3"
 ipython = "^8.26.0"
+fastapi = {extras = ["standard"], version = "^0.112.1"}
 
 [tool.poetry.scripts]
 argus = "argus.main:run"
