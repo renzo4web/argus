@@ -55,9 +55,9 @@ class ArgusCrew:
         )
 
     @agent
-    def product_describer(self) -> Agent:
+    def sales_copywriter(self) -> Agent:
         return Agent(
-            config=self.agents_config["product_describer"],
+            config=self.agents_config["sales_copywriter"],
             allow_delegation=False,
             verbose=True,
         )

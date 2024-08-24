@@ -16,6 +16,7 @@ openai = "^1.40.8"
 requests = "^2.32.3"
 ipython = "^8.26.0"
 fastapi = {extras = ["standard"], version = "^0.112.1"}
+fastapi-versionizer = "^4.0.1"
 
 [tool.poetry.scripts]
 argus = "argus.main:run"

@@ -59,6 +59,17 @@ To use the API, run the following command:
 fastapi dev src/api/main.py
 ```
 
+go to http://127.0.0.1:8000/v1/docs
+
+```json
+{
+  "urls": [
+    "https://res.cloudinary.com/ddht1mju9/image/upload/v1723844678/ew44f0rmmj7hd9wdsljk.jpg"
+  ],
+  "webhook_url": "https://silly-pencil-90.webhook.cool"
+}
+```
+
 ## Understanding Your Crew
 
 The argus Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.

@@ -1,4 +1,5 @@
 import base64
+from textwrap import dedent
 from typing import Type, List
 
 from crewai_tools.tools.base_tool import BaseTool
@@ -33,7 +34,23 @@ class VisionTool(BaseTool):
             {
                 "role": "user",
                 "content": [
-                    {"type": "text", "text": "What type of product is in these images? Is there any difference between them? please provide a detailed description of the product, DO NOT miss any important information"},
+                    {"type": "text", "text": dedent("""
+                        Analiza detalladamente estas imágenes de producto y proporciona la siguiente información:
+
+                            1. Tipo de producto: ¿Qué es exactamente?
+                            2. Descripción: ¿Puedes describir el producto en detalle? NO INVENTES NADA.
+                            3. Características físicas: Color, material, tamaño (si es evidente), forma.
+                            4. Marca: ¿Hay algún logo o nombre de marca visible?
+                            5. Funcionalidad: ¿Cuál parece ser el uso principal del producto?
+                            6. Calidad: ¿Qué puedes decir sobre la calidad aparente del producto?
+                            7. Detalles únicos: ¿Hay alguna característica especial o distintiva?
+                            8. Estado: ¿El producto parece nuevo, usado, vintage?
+                            9. Embalaje: ¿Cómo viene presentado el producto (si es visible)?
+                            10. Accesorios: ¿Viene con algún accesorio o componente adicional?
+                            11. Contexto: ¿Hay algo en la imagen que sugiera el entorno de uso del producto?
+
+                        Por favor, estructura tu respuesta en secciones claras. Si no puedes determinar algún aspecto con certeza, indica 'No se puede determinar' para ese punto específico.
+                        """)}
                 ]
             }
         ]

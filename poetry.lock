@@ -1074,6 +1074,20 @@ uvicorn = {version = ">=0.15.0", extras = ["standard"]}
 standard = ["uvicorn[standard] (>=0.15.0)"]
 
 [[package]]
+name = "fastapi-versionizer"
+version = "4.0.1"
+description = "API versionizer for FastAPI web applications"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "fastapi_versionizer-4.0.1.tar.gz", hash = "sha256:ced631ebefa4aa9774da3d1b77731ea6d3e622fd0d6a6544aac5928d3f1440f4"},
+]
+
+[package.dependencies]
+fastapi = ">=0.86.0"
+natsort = "==8.*"
+
+[[package]]
 name = "fastavro"
 version = "1.9.5"
 description = "Fast read/write of AVRO files"
@@ -3043,6 +3057,21 @@ files = [
     {file = "mypy_extensions-1.0.0-py3-none-any.whl", hash = "sha256:4392f6c0eb8a5668a69e23d168ffa70f0be9ccfd32b5cc2d26a34ae5b844552d"},
     {file = "mypy_extensions-1.0.0.tar.gz", hash = "sha256:75dbf8955dc00442a438fc4d0666508a9a97b6bd41aa2f0ffe9d2f2725af0782"},
 ]
+
+[[package]]
+name = "natsort"
+version = "8.4.0"
+description = "Simple yet flexible natural sorting in Python."
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "natsort-8.4.0-py3-none-any.whl", hash = "sha256:4732914fb471f56b5cce04d7bae6f164a592c7712e1c85f9ef585e197299521c"},
+    {file = "natsort-8.4.0.tar.gz", hash = "sha256:45312c4a0e5507593da193dedd04abb1469253b601ecaf63445ad80f0a1ea581"},
+]
+
+[package.extras]
+fast = ["fastnumbers (>=2.0.0)"]
+icu = ["PyICU (>=1.0.0)"]
 
 [[package]]
 name = "nodeenv"
@@ -5837,4 +5866,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<=3.13"
-content-hash = "f179ac483d02e47687d0fcbcc3e0ba92cf37a2f7a0e57e2825abaffddaf2fcad"
+content-hash = "598d2c4c366c7592694413ced8954dd0f9ce99d50dc77bcf5cda952df73c9c82"
